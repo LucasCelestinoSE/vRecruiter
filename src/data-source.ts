@@ -8,7 +8,7 @@ export const AppDataSource = new DataSource({
 	type: 'mysql',
 	host: process.env.MYSQLHOST,
 	port: PORT,
-	username: process.env.MYSQLDATABASE,
+	username: 'root',
 	password: process.env.MYSQLPASSWORD,
 	database: process.env.MYSQLDATABASE,
 	entities: [`${__dirname}/**/entities/*.{ts,js}`],
