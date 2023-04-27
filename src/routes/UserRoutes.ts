@@ -1,12 +1,12 @@
 import { Router } from 'express'
-import { UserController } from '../controllers/UserController'
+import { userController } from '../controllers'
 import auth from "../midware/AuthMidleware"
-
+import authPerfil from '../midware/AuthPerfil'
 
 const routes = Router()
-routes.get('/User', new UserController().listUser)
-routes.get('/User/:id', new UserController().listUserById)
-routes.post('/User', new UserController().createUser)
-routes.put('/User/:id', new UserController().update)
-routes.delete('/User/:id', new UserController().delete)
+routes.get('/pessoas',auth, userController.listUser)
+routes.post('pessoas/registro', userController.createUser )
+routes.get('/pessoa/perfil/:id',authPerfil, userController.listUserById )
+// implementar mais tarde routes.put('/User/:id', )
+// Idem routes.delete('/User/:id', )
 export default routes
