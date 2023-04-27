@@ -5,12 +5,12 @@ import { DataSource } from 'typeorm'
 const PORT = process.env.MYSQLPORT as number | undefined
 
 export const AppDataSource = new DataSource({
-	type: 'postgres',
-	host: process.env.MYSQLHOST,
-	port: PORT,
+	type: 'mysql',
+	host: 'localhost',
+	port: 3306,
 	username: 'root',
-	password: process.env.MYSQLPASSWORD,
-	database: process.env.MYSQLDATABASE,
+	password: 'lucas@98623457',
+	database: 'rr7',
 	entities: [`${__dirname}/**/entities/*.{ts,js}`],
 	migrations: [`${__dirname}/**/migrations/*.{ts,js}`],
 })

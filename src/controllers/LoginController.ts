@@ -18,7 +18,7 @@ export class LoginController {
                     status(200).
                     json({
                         message: "Login encontrado Associado", token: jwt.
-                            sign({ email: req.body.email }, jwtsecret.secretJWTU, { expiresIn: "48h" })
+                            sign({ email: req.body.email, id: authlogin_valida.id }, jwtsecret.secretJWTU, { expiresIn: "48h" })
                     })
             } else {
                 return res.status(401).json({ message: "Acesso Negado" })
