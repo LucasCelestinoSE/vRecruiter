@@ -1,9 +1,13 @@
 import {
 	Column,
 	Entity,
-	OneToMany,
+	OneToOne,
 	PrimaryGeneratedColumn,
+	JoinColumn,
+	OneToMany,
+	ManyToMany
 } from 'typeorm'
+import { Job } from './Job'
 
 
 @Entity('users')
@@ -19,5 +23,6 @@ export class User {
 
 	@Column({ type: 'text'})
 	password: string
-
+	@ManyToMany(() => Job, job => job.users)
+	jobs: Job[]
 }

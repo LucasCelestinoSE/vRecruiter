@@ -5,8 +5,9 @@ import authPerfil from '../midware/AuthPerfil'
 
 const routes = Router()
 routes.get('/pessoas',auth, userController.listUser)
-routes.post('pessoas/registro', userController.createUser )
-routes.get('/pessoa/perfil/:id',authPerfil, userController.listUserById )
+routes.post('/pessoas/registro', userController.createUser )
+routes.get('/pessoa/perfil/:id',authPerfil, userController.listUserById)
+routes.post('/cadastro/vaga/:idJob', userController.userJobRegister)
 // implementar mais tarde routes.put('/User/:id', )
 // Idem routes.delete('/User/:id', )
 export default routes
