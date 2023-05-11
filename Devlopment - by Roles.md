@@ -1,4 +1,4 @@
-##Toda rota tera um middleware para saber se o token é valido >> 
+#Toda rota tera um middleware para saber se o token é valido >> 
 *Dentro deste token, estará contido o Usuário e Id*
 
 #Rotas de adminstrador
