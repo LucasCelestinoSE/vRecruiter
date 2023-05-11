@@ -8,7 +8,7 @@ import {
 	ManyToMany
 } from 'typeorm'
 import { Job } from './Job'
-
+import { UserJob } from './UserJob'
 
 @Entity('users')
 export class User {
@@ -23,6 +23,5 @@ export class User {
 
 	@Column({ type: 'text'})
 	password: string
-	@ManyToMany(() => Job, job => job.users)
-	jobs: Job[]
+	
 }

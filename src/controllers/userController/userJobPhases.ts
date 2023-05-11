@@ -3,7 +3,7 @@ import { UserJob } from "../../entities/UserJob";
 import { userRepository } from "../../repositories/userRepository";
 import { jobsRepository } from "../../repositories/jobsRepository";
 import { userJobRepository } from "../../repositories/userJogRepository";
-export async function userJobRegister(req: Request, res: Response) {
+export async function userJobPhases(req: Request, res: Response) {
     const idJob = Number(req.params.idJob)
     const idUser = Number(res.locals.myvalue.id)
     try {
@@ -20,15 +20,19 @@ export async function userJobRegister(req: Request, res: Response) {
             userId: idUser,
             jobId: Number(idJob)
         }})
-        if(userRegis){
-            return res.status(400).json('Você já está cadastrado nessa vaga!')
+        if(!userRegis){
+            return res.status(400).json('Você não está cadastrado nessa vaga!')
         }
-        console.log({job: job}, {user: user}, {userRegis: userRegis})
-        const userJob = new UserJob();
-        userJob.userId = idUser; 
-        userJob.jobId = Number(idJob);
-        userJob.stage = 0
-        await userJobRepository.save(userJob)
+        if(userRegis.stage < 4){
+            userRegis.stage++
+        }else{
+            return res.status(400).json('Não é permitido mais continuar')
+        }
+        
+        await userJobRepository.save(userRegis)
+        return res.status(200)
+        .json(
+            {message: 'Usuário avançou de fase! ',data: userRegis    })
     } catch (error) {
         console.log(error)
         res.status(500).json('Internal server error!')

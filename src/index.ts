@@ -1,18 +1,15 @@
-import express ,{NextFunction, Request, Response } from 'express'
+import { Request,Response,NextFunction } from 'express';
 import { AppDataSource } from './data-source'
-import { routes } from './routes/index';
-import cors from 'cors'
+import { routes } from './routes';
+
 const PORT = process.env.PORT || 3000
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser')
 AppDataSource.initialize().then(() => {
+
+  const express = require('express')
   const app = express()
-  app.use(bodyParser.urlencoded({ extended: true }));
-  app.use(bodyParser.json());
-  app.use((req: Request,res: Response,next: NextFunction) =>{
-    res.header("Access-Control-Allow-Origin", "*")
-    app.use(cors());
-    next()
-})
+  app.use(express.json())
+  
   routes(app)
 
   const server = app.listen(PORT, () => {

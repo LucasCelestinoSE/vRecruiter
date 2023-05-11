@@ -21,6 +21,7 @@ function  authPerfil(req: AuthenticatedRequest, res: Response, next: NextFunctio
             if (idParams != data.id){
                 res.sendStatus(401).json()}
             else{
+            
             next()
         }
 }})

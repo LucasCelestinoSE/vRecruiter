@@ -5,7 +5,6 @@ import { companyController } from '../controllers/companyController'
 
 
 const routes = Router()
-routes.post('/create/vaga/:idCompany', companyController.createCompany )
-
+routes.post('/create/job/:idCompany/', companyController.createJob)
 
 export default routes

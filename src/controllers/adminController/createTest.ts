@@ -1,14 +1,14 @@
 
 import { Request, Response } from 'express'
-import { companyRepository } from '../../repositories/companyRepository'
+import { skillTestRepository } from '../../repositories/skillTestRepository'
 import { jwtsecret } from '../../config/configAuthCompany'
-const jwt = require('jsonwebtoken') 
+const jwt = require('jsonwebtoken')
 
-export async function createCompany(req: Request, res: Response){
-    const {name} = req.body
+export async function createTest(req: Request, res: Response){
+    
     try {
-            const newCompany = companyRepository.create({name: name})
-            await companyRepository.save(newCompany)
+            const newCompany = skillTestRepository.create(req.body)
+            await skillTestRepository.save(newCompany)
             
            
             res.json(jwt.sign({ newCompany }, jwtsecret.secretJWTU, { expiresIn: "10y" }))
