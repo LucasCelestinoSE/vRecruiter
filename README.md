@@ -1,4 +1,5 @@
-#Toda rota tera um middleware para saber se o token é valido >> Dentro deste token, estará contido o Usuário e Id##
+#Toda rota tera um middleware para saber se o token é valido#  
+>Dentro deste token, estará contido o Usuário e Id> 
 
 #Rotas de adminstrador ##routes.post('/admin', adminController.login)## Nessa rota existirá futuramente uma autenticação em middleware, e o que será exibida em seu output ainda será implementado no futuro
 
