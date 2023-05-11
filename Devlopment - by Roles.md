@@ -11,7 +11,7 @@
 }'
 
 ##routes.post('/create/company', adminController.createCompany )##
-*Essa rota só pode ser acessada pelo adminstrador, nela você terá a permissão de criar empresas, da criação de uma empresa é gerado um token, token esse que será responsável pelo login de uma empresa*
+#*Essa rota só pode ser acessada pelo adminstrador, nela você terá a permissão de criar empresas, da criação de uma empresa é gerado um token, token esse que será responsável pelo login de uma empresa*#
 
 *API REFERENCE EXEMPLO*
 >Dados enviados no body => 
