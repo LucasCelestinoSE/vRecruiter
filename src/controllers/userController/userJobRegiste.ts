@@ -6,6 +6,8 @@ import { userJobRepository } from "../../repositories/userJogRepository";
 export async function userJobRegister(req: Request, res: Response) {
     const idJob = Number(req.params.idJob)
     const idUser = Number(res.locals.myvalue.id)
+    const dataJson = req.body.phase
+    console.log(dataJson)
     try {
         const job = await jobsRepository.findOne({where:{id: idJob}})
         if (!job){
@@ -23,12 +25,14 @@ export async function userJobRegister(req: Request, res: Response) {
         if(userRegis){
             return res.status(400).json('Você já está cadastrado nessa vaga!')
         }
-        console.log({job: job}, {user: user}, {userRegis: userRegis})
+       
         const userJob = new UserJob();
         userJob.userId = idUser; 
         userJob.jobId = Number(idJob);
         userJob.stage = 0
+        userJob.phase_1Data = dataJson
         await userJobRepository.save(userJob)
+        return res.status(200).json(userJob)
     } catch (error) {
         console.log(error)
         res.status(500).json('Internal server error!')

@@ -31,7 +31,7 @@
 ```
 
 ### POST /create/company
-*Entrada:* 'http://ip/create/company'
+*Entrada:* ```http://ip/create/company```
 *Saida:* 
 
 ```Json 

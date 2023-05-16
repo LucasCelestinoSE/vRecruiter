@@ -16,7 +16,8 @@ export class Job {
     @ManyToOne(() => Company, company => company.jobs)
     @JoinColumn({name: 'company_id'})
     company: Company
-    @Column({ type: 'int', default: 0})
-    stage: number
-   
+    @Column({ type: 'json', nullable: true })
+    jobTest: JSON;
+    @Column({ type: 'json', nullable: true })
+    feedback: JSON;
   }
