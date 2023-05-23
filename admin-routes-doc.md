@@ -9,11 +9,10 @@
 ### POST /admin/login ()
 
 *Nessa rota existirá futuramente uma autenticação em middleware, e o que será exibido em sua saida ainda será implementado no futuro*
-<br>
+
 *API EXEMPLO*
 
 *Entrada*
-
 **Corpo da Requisição no BODY (JSON):**
 
 ```json
@@ -31,8 +30,10 @@
 ```
 ### Middleware de autenticação
 *API EXEMPLO*
+
 *Entrada*
 **Corpo de requisição no Header = ['Autorization']**
+
 *Saída quando há o token é válido e não valido, respectivamente*
 ```Json 
 {"message": "login encontrado associado"}
@@ -42,7 +43,9 @@
 ```
 ### POST /criar/empresa (admin)
 *Entrada:* ```http://ip/create/company```
+
 **Requisão feita no body:**
+
 *Saida:* 
 
 ```Json 
@@ -50,7 +53,9 @@
 ```
 ### GET /usuario -> (Admin)
 *Essa rota retornará todos os usuários encontrados no banco.*
+
 *Entrada:* ```http:/usuarios```
+
 *Saida:* 
 
 ```Json 
@@ -60,23 +65,31 @@
 ### GET /empresas (ADMIN)
 
 *Essa rota retornará toda as empresas que estão cadastradas na vRecruiter*
+
 *Entrada:* ```http:/empresas```
+
 *saida*
 ```Json 
 {"empresas": "[array de empresas]"}
 ```
 ### GET /empresa/:EmpresaID/ (ADMIN)
 *Essa rota retornará uma empresa especifica e suas informações pelo id dado nos parametros de rota, lembrando que o empresaID é meramente minemônimo somente na documentação, e no código está /id somente.*
+
 **Requisão feita nos parametros de Rota (/empresa/:EmpresaID/):**
+
 *Entrada:* ```http:/empresa/:EmpresaID/```
-*saida*
+
+**Saida**
 ```Json 
 {"empresa": "empresa"}
 ```
 ### POST /criar/vaga/:id/ (ADMIN)
 *Essa rota esperará do parametro de rota, um id referente a empresa*
+
 **Requisão feita nos parametros de Rota (/empresa/vaga/:id/):**
+
 **Requisão feita no body com as informações da vaga:  :**
+
 *Entrada:* ```http:/criar/vaga/id```
 *saida*
 ```Json 
@@ -84,17 +97,23 @@
 ```
 ### GET /empresa/vaga/:idEmpresa/ (ADMIN)
 *Essa rota esperará do parametro de rota, um id referente a empresa*
+
 **Requisão feita nos parametros de Rota (/empresa/vaga/:id/):**
+
 *Entrada:* ```http:/criar/vaga/id```
-*saida*
+
+*Saida:*
 ```Json 
 {"vagas": "['Array de vagas referente a empresa']"}
 ```
 ### GET /admin/vaga/:jobId/ (ADMIN)
 *Essa rota esperará do parametro de rota, um jobId referente a vaga e retornará a vaga que corresponde a esse jobId (jobId minemônico (id))*
+
 **Requisão feita nos parametros de Rota (/admin/vaga/:jobId/):**
+
 *Entrada:* ```http:/criar/vaga/id```
-*saida*
+
+*Saida:*
 ```Json 
 {"vaga": "job"}
 ```
