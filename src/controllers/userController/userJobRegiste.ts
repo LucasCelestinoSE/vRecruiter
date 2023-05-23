@@ -32,7 +32,7 @@ export async function userJobRegister(req: Request, res: Response) {
         userJob.userId = idUser; 
         userJob.jobId = idJob
         userJob.stage = 0
-        userJob.companyId = job.company
+        userJob.companyId = job.company.id
         userJob.otherInfo = {
             nome: name,
             idade: idade,

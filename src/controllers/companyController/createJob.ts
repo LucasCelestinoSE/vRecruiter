@@ -14,10 +14,16 @@ export async function createJob(req: Request, res: Response){
 		console.log(body)
 		const {gabarito} = req.body
 		try {
+			const company = await companyRepository.findOne({where:{
+				id: id
+			}})
+			if(!company){
+				return res.status(400).json("empresa não encontrada!")
+			}
 			const newJob = new Job
 			newJob.title = title
 			newJob.description = description
-			newJob.company = id
+			newJob.company = company
 			newJob.gabarito = gabarito
 			newJob.perguntas = body
 			await jobsRepository.save(newJob)
