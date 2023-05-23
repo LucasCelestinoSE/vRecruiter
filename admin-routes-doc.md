@@ -9,7 +9,7 @@
 ### POST /admin/login ()
 
 *Nessa rota existirá futuramente uma autenticação em middleware, e o que será exibido em sua saida ainda será implementado no futuro*
-
+<br>
 *API EXEMPLO*
 
 *Entrada*
