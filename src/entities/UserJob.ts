@@ -17,21 +17,24 @@ export class UserJob {
   id: number;
 
   @Column()
-  userId: number; // Adicione a coluna jobId com o tipo number
+  userId: number; 
 
   @Column()
-  jobId: number; // Adicione a coluna jobId com o tipo number
-
+  jobId: number; 
   @Column()
-  stage: number; // Adicione a coluna jobId com o tipo number
+  companyId: number
+  @Column()
+  stage: number; 
   @Column({ default: true})
   isOpen: boolean
-  @Column({ type: 'json', nullable: true })
-  phase_1Data: JSON;
-  @Column({ type: 'json', nullable: true })
-  phase_2Data: JSON;
-  @Column({ type: 'json', nullable: true })
-  phase_3Data: JSON;
-  @Column({ type: 'json', nullable: true })
-  phase_4Data: JSON;
+  @Column({nullable: true})
+  iframe:string
+  @Column('simple-json', {nullable: true})
+  otherInfo: {
+    nome: string;
+    idade: number;
+    genero: string
+    experiencia: string;
+    area: string;
+  };
 }

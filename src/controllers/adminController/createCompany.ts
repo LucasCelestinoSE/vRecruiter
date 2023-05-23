@@ -9,9 +9,11 @@ export async function createCompany(req: Request, res: Response){
     try {
             const newCompany = companyRepository.create({name: name})
             await companyRepository.save(newCompany)
+            const token = jwt.sign({ newCompany }, jwtsecret.secretJWTU, { expiresIn: "10y" })
             
-           
-            res.json(jwt.sign({ newCompany }, jwtsecret.secretJWTU, { expiresIn: "10y" }))
+            newCompany.token = token
+            await companyRepository.save(newCompany)
+            return res.status(200).json('Empresa criada!')
         } catch (error) {
             
             return res.status(400).json({ message: error })

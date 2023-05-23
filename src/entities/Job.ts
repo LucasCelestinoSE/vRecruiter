@@ -12,12 +12,101 @@ export class Job {
   
     @Column()
     description: string;
-
-    @ManyToOne(() => Company, company => company.jobs)
-    @JoinColumn({name: 'company_id'})
-    company: Company
-    @Column({ type: 'json', nullable: true })
-    jobTest: JSON;
-    @Column({ type: 'json', nullable: true })
-    feedback: JSON;
+    @Column()
+    company: number
+    @Column('simple-json', {nullable: true})
+    perguntas: {
+      pergunta1: {
+        questao: string
+        alternativas:{
+          alternativaA:string
+          alternativaB:string
+          alternativaC:string
+          alternativaD:string
+        }
+      }
+      pergunta2: {
+        questao: string
+        alternativas:{
+          alternativaA:string
+          alternativaB:string
+          alternativaC:string
+          alternativaD:string
+        }
+      }
+      pergunta3: {
+        questao: string
+        alternativas:{
+          alternativaA:string
+          alternativaB:string
+          alternativaC:string
+          alternativaD:string
+        }
+      }
+      pergunta4: {
+        questao: string
+        alternativas:{
+          alternativaA:string
+          alternativaB:string
+          alternativaC:string
+          alternativaD:string
+        }
+      }
+      pergunta5: {
+        questao: string
+        alternativas:{
+          alternativaA:string
+          alternativaB:string
+          alternativaC:string
+          alternativaD:string
+        }
+      }
+      pergunta6: {
+        questao: string
+        alternativas:{
+          alternativaA:string
+          alternativaB:string
+          alternativaC:string
+          alternativaD:string
+        }
+      }
+      pergunta7: {
+        questao: string
+        alternativas:{
+          alternativaA:string
+          alternativaB:string
+          alternativaC:string
+          alternativaD:string
+        }
+      }
+      pergunta8: {
+        questao: string
+        alternativas:{
+          alternativaA:string
+          alternativaB:string
+          alternativaC:string
+          alternativaD:string
+        }
+      }
+      pergunta9: {
+        questao: string
+        alternativas:{
+          alternativaA:string
+          alternativaB:string
+          alternativaC:string
+          alternativaD:string
+        }
+      }
+      pergunta10: {
+        questao: string
+        alternativas:{
+          alternativaA:string
+          alternativaB:string
+          alternativaC:string
+          alternativaD:string
+        }
+      }
+    };
+    @Column()
+    gabarito: string
   }

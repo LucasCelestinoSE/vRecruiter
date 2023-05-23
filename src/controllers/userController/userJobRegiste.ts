@@ -3,11 +3,13 @@ import { UserJob } from "../../entities/UserJob";
 import { userRepository } from "../../repositories/userRepository";
 import { jobsRepository } from "../../repositories/jobsRepository";
 import { userJobRepository } from "../../repositories/userJogRepository";
+
+
 export async function userJobRegister(req: Request, res: Response) {
     const idJob = Number(req.params.idJob)
     const idUser = Number(res.locals.myvalue.id)
-    const dataJson = req.body.phase
-    console.log(dataJson)
+    const {name,genero,experiencia,area,idade} = req.body
+    console.log(name,genero,experiencia,area)
     try {
         const job = await jobsRepository.findOne({where:{id: idJob}})
         if (!job){
@@ -20,7 +22,7 @@ export async function userJobRegister(req: Request, res: Response) {
 
         const userRegis = await userJobRepository.findOne({where:{
             userId: idUser,
-            jobId: Number(idJob)
+            jobId: idJob    
         }})
         if(userRegis){
             return res.status(400).json('Você já está cadastrado nessa vaga!')
@@ -28,9 +30,16 @@ export async function userJobRegister(req: Request, res: Response) {
        
         const userJob = new UserJob();
         userJob.userId = idUser; 
-        userJob.jobId = Number(idJob);
+        userJob.jobId = idJob
         userJob.stage = 0
-        userJob.phase_1Data = dataJson
+        userJob.companyId = job.company
+        userJob.otherInfo = {
+            nome: name,
+            idade: idade,
+            genero: genero,
+            experiencia: experiencia,
+            area: area
+        }
         await userJobRepository.save(userJob)
         return res.status(200).json(userJob)
     } catch (error) {

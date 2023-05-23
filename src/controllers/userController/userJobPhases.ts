@@ -28,11 +28,13 @@ export async function userJobPhases(req: Request, res: Response) {
         }
         if (userRegis.isOpen == true){
         if(userRegis.stage == 0){
-            const test = job.feedback
+            const test = job.gabarito
             const jsonString = JSON.stringify(test);
             const objetoJSON = JSON.parse(jsonString);
             const testCorte = objetoJSON.split(' ')
+            console.log(testCorte)
             const gabCorte = gabarito.split(" ")
+            console.log(gabCorte)
             const temValoresIguais = gabCorte.map((item:string, index:number) => item === testCorte[index])
             const quantidade = temValoresIguais.reduce((count:any, value:any) => {
                 if (value === true) {
@@ -53,12 +55,13 @@ export async function userJobPhases(req: Request, res: Response) {
             return res.status(200).json('Infelizmente você nao atingiu a pontuação mínima!')
             }
         }
-        else if(userRegis.stage == 2){
+        else if(userRegis.stage == 1){
             userRegis.stage++
+            userRegis.iframe = iframe
             if (iframe == undefined){
                 return res.status(401).json('Insira um valor iframe valido  ')
             }
-            userRegis.phase_3Data = iframe
+            
             await userJobRepository.save(userRegis)
             return res.status(200).json('Iframe enviado com sucesso!')
         }}else{

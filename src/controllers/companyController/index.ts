@@ -1,7 +1,9 @@
 import * as createJob from './createJob'
-import * as renderJob from './renderJob'
+import * as listUserInJob from './listUserInJob'
+import * as listCompany from './listCompany'
 export const companyController = {
     ...createJob,
-    ...renderJob
 
+    ...listUserInJob,
+    ...listCompany
 }

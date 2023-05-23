@@ -1,15 +1,15 @@
 import { Router } from 'express'
 import { userController } from '../controllers'
 import auth from "../midware/AuthMidleware"
-const bodyParser = require('body-parser');
+
 
 
 const routes = Router()
-routes.get('/people',auth, userController.listUser) // admin auth
-routes.post('/create/register', userController.createUser) 
-routes.get('/people/profile/',auth, userController.listUserById) // userAuth
-routes.post('/register-in/job/:idJob',auth, userController.userJobRegister) //userAuth
-routes.put('/stages-on/job/:idJob', auth,userController.userJobPhases) // userAuth
+routes.post('/registro', userController.createUser) 
+routes.post('/login', userController.login)
+routes.get('/pessoa/perfil',auth, userController.listUserById) // userAuth
+routes.post('/registrar-em/vaga/:idJob/',auth, userController.userJobRegister) //userAuth
+routes.put('/fases-de/vaga/:idJob/', auth,userController.userJobPhases) // userAuth
 // implementar mais tarde routes.put('/User/:id', )
 // Idem routes.delete('/User/:id', )
 export default routes

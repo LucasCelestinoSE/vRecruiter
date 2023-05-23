@@ -5,6 +5,7 @@ import * as listUserById from './listUserById'
 import * as updateUser from './updateUser'
 import * as userJobRegister from './userJobRegiste'
 import * as userJobPhase from './userJobPhases'
+import * as login from './login'
 export const userController = {
     ...listUser,
     ...listUserById,
@@ -12,7 +13,8 @@ export const userController = {
     ...deleteUserById,
     ...updateUser,
     ...userJobRegister,
-    ...userJobPhase
+    ...userJobPhase,
+    ...login
 }
 
 

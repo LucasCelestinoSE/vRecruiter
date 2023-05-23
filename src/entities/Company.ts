@@ -7,6 +7,6 @@ export class Company {
 
   @Column({ type: 'text' })
   name: string;
-  @OneToMany(() => Job, job => job.company)
-  jobs: Job[]
+  @Column({nullable: true})
+  token: string
 }

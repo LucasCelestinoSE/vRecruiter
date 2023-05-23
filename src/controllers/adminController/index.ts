@@ -1,8 +1,8 @@
-import * as createCompany from './createCompany' 
-import * as login from './login'
-import * as test from './teste'
+import * as createCompany from './createCompany'
+import * as renderJobs from './renderJob'
+import * as listaJobById from './listJobByjobId'
 export const adminController = {
     ...createCompany,
-    ...login,
-    ...test
+    ...renderJobs,
+    ...listaJobById
 }
