@@ -1,6 +1,6 @@
 import { userJobRepository } from "../../repositories/userJogRepository";
 import { Response, Request } from "express"
-export async function listUserInJob(req: Request, res: Response) {
+export async function listPassUserInJob(req: Request, res: Response) {
     const jobId = req.body.id
     const companyId = Number(req.params.id)
     try {

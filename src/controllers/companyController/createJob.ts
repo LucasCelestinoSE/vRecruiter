@@ -28,7 +28,7 @@ export async function createJob(req: Request, res: Response){
 			newJob.perguntas = body
 			await jobsRepository.save(newJob)
 
-			return res.status(201).json('Vaga criada com sucesso!')
+			return res.status(201).json(newJob)
 		} catch (error) {
 			console.log(error)
 			return res.status(500).json({ message: 'Internal Sever Error' })

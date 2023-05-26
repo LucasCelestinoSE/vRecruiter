@@ -3,7 +3,7 @@ import { companyRepository } from "../../repositories/companyRepository"
 import { Response, Request } from "express"
 export async function listJobs(req: Request, res: Response) {
     try {
-        const users = await jobsRepository
+        const jobs = await jobsRepository
         .createQueryBuilder('job')
         .select(['job.description', 'job.id', 'job.title'])
         .leftJoin('job.company', 'company')
@@ -12,7 +12,7 @@ export async function listJobs(req: Request, res: Response) {
 
         
               
-        return res.status(200).json({users})
+        return res.status(200).json({jobs})
     } catch (error) {
         console.log(error)
         return res.status(500).json({ message: 'Internal Sever Error' })
