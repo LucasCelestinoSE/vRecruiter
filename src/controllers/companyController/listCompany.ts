@@ -1,5 +1,6 @@
 import { companyRepository } from "../../repositories/companyRepository";
 import { Response, Request } from "express"
+
 export async function listCompany(req: Request, res: Response) {
     const jobId = req.body.id
     try {
