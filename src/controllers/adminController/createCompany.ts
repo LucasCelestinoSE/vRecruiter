@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken')
 export async function createCompany(req: Request, res: Response){
     const {name} = req.body
     try {
+            
             const newCompany = companyRepository.create({name: name})
             await companyRepository.save(newCompany)
             const token = jwt.sign({ newCompany }, jwtsecret.secretJWTU, { expiresIn: "10y" })

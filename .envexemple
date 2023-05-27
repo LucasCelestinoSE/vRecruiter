@@ -1,0 +1,4 @@
+DB_HOST = containers-us-west-89.railway.app
+DB_PORT = 7141
+DB_USER = root
+DB_PASSWORD = NlNbbkahi69P50idV7SG

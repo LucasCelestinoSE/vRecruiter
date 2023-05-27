@@ -4,7 +4,8 @@ import { userController } from '../controllers'
 import auth from '../midware/AuthAdmin'
 import authPerfil from '../midware/AuthMidleware'
 import AuthAdmin from '../midware/AuthAdmin'
-
+import { multerConfig } from '../config/multer'
+import multer from 'multer'
 const routes = Router()
  // Mostra todas as empresas
 routes.get('/vagas', userController.listJobs)
