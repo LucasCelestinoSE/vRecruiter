@@ -1,9 +1,12 @@
 import { Request,Response,NextFunction } from 'express';
 import { AppDataSource } from './data-source'
 import { routes } from './routes';
+const fileUpload = require('express-fileupload')
+const { getStorage, ref, uploadBytes } = require("firebase/storage");
 const cors = require('cors')
 const PORT = process.env.PORT || 5000
 const bodyParser = require('body-parser')
+import multer = require('multer');
 AppDataSource.initialize().then(() => {
 
   const express = require('express')
@@ -17,6 +20,7 @@ AppDataSource.initialize().then(() => {
   });
   routes(app)
   app.use(cors())
+
   const server = app.listen(PORT, () => {
     console.log(`Servidor iniciado na porta ${PORT}`)
   })

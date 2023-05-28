@@ -7,6 +7,8 @@ import * as userJobRegister from './userJobRegiste'
 import * as userJobPhase from './userJobPhases'
 import * as login from './login'
 import * as job from './listJob'
+import * as listCompanyById from './listCompanyById'
+import * as listJobById from './listJobById'
 export const userController = {
     ...listUser,
     ...listUserById,
@@ -16,7 +18,9 @@ export const userController = {
     ...userJobRegister,
     ...userJobPhase,
     ...login,
-    ...job
+    ...job,
+    ...listCompanyById,
+    ...listJobById
 }
 
 
