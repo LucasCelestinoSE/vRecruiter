@@ -59,7 +59,7 @@ export async function userJobPhases(req: Request, res: Response) {
             userRegis.stage++
             userRegis.iframe = iframe
             if (iframe == undefined){
-                return res.status(401).json('Insira um valor iframe valido  ')
+                return res.status(401).json('Insira um valor iframe valido')
             }
             
             await userJobRepository.save(userRegis)

@@ -6,33 +6,11 @@
 
 ## Rotas de Administrador
 
-### POST /admin/login ()
-
-*Nessa rota existirá futuramente uma autenticação em middleware, e o que será exibido em sua saida ainda será implementado no futuro*
-
-*API EXEMPLO*
-
-*Entrada*
-**Corpo da Requisição no BODY (JSON):**
-
-```json
-{
-  "username": "string",
-  "password": "string"
-}
-```
-* SAIDA *
-
-```json
-{
-  "token": "A*SF*ASFHASHFASHFYASYFYAGSF"
-}
-```
 ### Middleware de autenticação
 *API EXEMPLO*
 
 *Entrada*
-**Corpo de requisição no Header = ['Autorization']**
+**Corpo de requisição no Header = ['authorization']**
 
 *Saída quando há o token é válido e não valido, respectivamente*
 ```Json 
@@ -51,7 +29,7 @@
 ```Json 
 {"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuZXdDb21wYW55Ijp7Im5hbWUiOiJjb3JpbnRoaWFucyBGQyIsImlkIjo1fSwiaWF0IjoxNjgzODEzMDczLCJleHAiOjE5OTkzODkwNzN9QbM8CiWlcZk010H5Gd_kttNy-f_UKS8lPcSklQk5.hAU"}
 ```
-### GET /usuario -> (Admin)
+### GET /usuarios -> (Admin)
 *Essa rota retornará todos os usuários encontrados no banco.*
 
 *Entrada:* ```http:/usuarios```

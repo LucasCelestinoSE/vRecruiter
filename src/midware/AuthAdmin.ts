@@ -17,7 +17,6 @@ function auth(req: AuthenticatedRequest, res: Response, next: NextFunction) {
         res.status(401);
         res.json({ err: "Token inválido" });
       } else {
-        res.locals.myvalue = data
         next();
       }
     });
