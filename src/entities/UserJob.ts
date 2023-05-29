@@ -37,4 +37,6 @@ export class UserJob {
     experiencia: string;
     area: string;
   };
+  @Column()
+  right_answers: number
 }

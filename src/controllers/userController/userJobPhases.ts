@@ -27,30 +27,31 @@ export async function userJobPhases(req: Request, res: Response) {
             return res.status(400).json('Você não está cadastrado nessa vaga!')
         }
         if (userRegis.isOpen == true){
-        if(userRegis.stage == 0){
-            const test = job.gabarito
-            const jsonString = JSON.stringify(test);
-            const objetoJSON = JSON.parse(jsonString);
-            const testCorte = objetoJSON.split(' ')
-            console.log(testCorte)
-            const gabCorte = gabarito.split(" ")
-            console.log(gabCorte)
-            const temValoresIguais = gabCorte.map((item:string, index:number) => item === testCorte[index])
-            const quantidade = temValoresIguais.reduce((count:any, value:any) => {
-                if (value === true) {
-                  return count + 1;
-                } else {
-                  return count;
-                }
-              }, 0);
-            if (quantidade >= 5){
-                userRegis.stage++
-                await userJobRepository.save(userRegis)
-                return res.status(200)
-                .json(
-                {message: 'Usuário avançou de fase! ',data: userRegis    })
-            }else{
-            userRegis.isOpen = false
+            if(userRegis.stage == 0){
+                const test = job.gabarito
+                const jsonString = JSON.stringify(test);
+                const objetoJSON = JSON.parse(jsonString);
+                const testCorte = objetoJSON.split(' ')
+                console.log(testCorte)
+                const gabCorte = gabarito.split(" ")
+                console.log(gabCorte)
+                const temValoresIguais = gabCorte.map((item:string, index:number) => item === testCorte[index])
+                const quantidade = temValoresIguais.reduce((count:any, value:any) => {
+                    if (value === true) {
+                    return count + 1;
+                    } else {
+                    return count;
+                    }
+                }, 0);
+                    if (quantidade >= 5){
+                        userRegis.stage++
+                        await userJobRepository.save(userRegis)
+                        return res.status(200)
+                        .json(
+                        {message: 'Usuário avançou de fase! ',data: userRegis    })
+                    }else{
+                 userRegis.isOpen = false
+                 userRegis.right_answers = quantidade
             await userJobRepository.save(userRegis)
             return res.status(200).json('Infelizmente você nao atingiu a pontuação mínima!')
             }
