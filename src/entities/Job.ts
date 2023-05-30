@@ -15,99 +15,10 @@ export class Job {
     // Defina a relação inversa com a entidade Company
    @ManyToOne(() => Company, company => company.jobs)
     company: Company;
-    @Column('simple-json', {nullable: true})
-    perguntas: {
-      pergunta1: {
-        questao: string
-        alternativas:{
-          alternativaA:string
-          alternativaB:string
-          alternativaC:string
-          alternativaD:string
-        }
-      }
-      pergunta2: {
-        questao: string
-        alternativas:{
-          alternativaA:string
-          alternativaB:string
-          alternativaC:string
-          alternativaD:string
-        }
-      }
-      pergunta3: {
-        questao: string
-        alternativas:{
-          alternativaA:string
-          alternativaB:string
-          alternativaC:string
-          alternativaD:string
-        }
-      }
-      pergunta4: {
-        questao: string
-        alternativas:{
-          alternativaA:string
-          alternativaB:string
-          alternativaC:string
-          alternativaD:string
-        }
-      }
-      pergunta5: {
-        questao: string
-        alternativas:{
-          alternativaA:string
-          alternativaB:string
-          alternativaC:string
-          alternativaD:string
-        }
-      }
-      pergunta6: {
-        questao: string
-        alternativas:{
-          alternativaA:string
-          alternativaB:string
-          alternativaC:string
-          alternativaD:string
-        }
-      }
-      pergunta7: {
-        questao: string
-        alternativas:{
-          alternativaA:string
-          alternativaB:string
-          alternativaC:string
-          alternativaD:string
-        }
-      }
-      pergunta8: {
-        questao: string
-        alternativas:{
-          alternativaA:string
-          alternativaB:string
-          alternativaC:string
-          alternativaD:string
-        }
-      }
-      pergunta9: {
-        questao: string
-        alternativas:{
-          alternativaA:string
-          alternativaB:string
-          alternativaC:string
-          alternativaD:string
-        }
-      }
-      pergunta10: {
-        questao: string
-        alternativas:{
-          alternativaA:string
-          alternativaB:string
-          alternativaC:string
-          alternativaD:string
-        }
-      }
-    };
+    @Column()
+    perguntas: string
+    @Column()
+    alternativas:string
     @Column()
     gabarito: string
   }
