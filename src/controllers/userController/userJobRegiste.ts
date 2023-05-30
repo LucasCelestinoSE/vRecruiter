@@ -33,13 +33,6 @@ export async function userJobRegister(req: Request, res: Response) {
         userJob.jobId = idJob
         userJob.stage = 0
         userJob.companyId = job.company.id
-        userJob.otherInfo = {
-            nome: name,
-            idade: idade,
-            genero: genero,
-            experiencia: experiencia,
-            area: area
-        }
         await userJobRepository.save(userJob)
         return res.status(200).json(userJob)
     } catch (error) {

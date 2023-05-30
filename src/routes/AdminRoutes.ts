@@ -10,6 +10,6 @@ routes.post('/criar/vaga/:id/',auth, companyController.createJob)// id da empres
 routes.get('/empresas', companyController.listCompany)
 routes.get('/admin/empresa/vaga/:id/',auth,adminController.renderJobs) // Listagem de vagas pertecentes a empresa
 routes.get('/admin/vaga/:id/',auth,adminController.listJobByjobId) // listagem de vagas criadas pelo id da vaga
-routes.get('/admin/usuario/pass/:companyId/:jobId/',auth, companyController.ranking) // 
+routes.get('/admin/usuario/pass/:companyId/:jobId/', companyController.ranking) // 
 routes.get('/admin',auth )
 export default routes

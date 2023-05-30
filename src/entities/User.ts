@@ -23,4 +23,8 @@ export class User {
 
 	@Column({ type: 'text'})
 	password: string
+	@Column({type:'simple-array'})
+	experiencia: string[]
+	@Column({type: 'simple-array'})
+	formacao: string[]
 }

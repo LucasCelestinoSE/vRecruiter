@@ -5,9 +5,10 @@ export async function ranking(req: Request, res: Response) {
     const companyId = Number(req.params.companyId)
     try {
         const users = await userJobRepository.find({where:{
-            stage: 2,
             jobId: jobId,
             companyId: companyId
+        },order:{
+            right_answers: 'DESC'
         }});
 
         return res.status(200).json(users)

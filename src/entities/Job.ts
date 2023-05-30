@@ -17,7 +17,7 @@ export class Job {
     company: Company;
     @Column()
     perguntas: string
-    @Column()
+    @Column({type: 'longtext'})
     alternativas:string
     @Column()
     gabarito: string

@@ -29,14 +29,7 @@ export class UserJob {
   isOpen: boolean
   @Column({nullable: true})
   iframe:string
-  @Column('simple-json', {nullable: true})
-  otherInfo: {
-    nome: string;
-    idade: number;
-    genero: string
-    experiencia: string;
-    area: string;
-  };
-  @Column()
+
+  @Column({nullable: true})
   right_answers: number
 }

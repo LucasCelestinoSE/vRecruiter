@@ -4,10 +4,12 @@ import { userRepository } from "../../repositories/userRepository";
 import { jobsRepository } from "../../repositories/jobsRepository";
 import { userJobRepository } from "../../repositories/userJogRepository";
 import { json } from "body-parser";
+import { stringify } from "querystring";
 export async function userJobPhases(req: Request, res: Response) {
     const idJob = Number(req.params.idJob)
     const idUser = Number(res.locals.myvalue.id)
     const gabarito = req.body.gabarito
+    
     const iframe = req.body.iframe
     try {
         const job = await jobsRepository.findOne({where:{id: idJob}})
@@ -28,7 +30,9 @@ export async function userJobPhases(req: Request, res: Response) {
         }
         if (userRegis.isOpen == true){
             if(userRegis.stage == 0){
-                const test = job.gabarito
+                let test = job.gabarito
+                
+                console.log(test)
                 const jsonString = JSON.stringify(test);
                 const objetoJSON = JSON.parse(jsonString);
                 const testCorte = objetoJSON.split(' ')
@@ -43,6 +47,7 @@ export async function userJobPhases(req: Request, res: Response) {
                     return count;
                     }
                 }, 0);
+                userRegis.right_answers = quantidade
                     if (quantidade >= 5){
                         userRegis.stage++
                         await userJobRepository.save(userRegis)
@@ -50,8 +55,8 @@ export async function userJobPhases(req: Request, res: Response) {
                         .json(
                         {message: 'Usuário avançou de fase! ',data: userRegis    })
                     }else{
-                 userRegis.isOpen = false
-                 userRegis.right_answers = quantidade
+                 userRegis.isOpen = true
+                 
             await userJobRepository.save(userRegis)
             return res.status(200).json('Infelizmente você nao atingiu a pontuação mínima!')
             }
