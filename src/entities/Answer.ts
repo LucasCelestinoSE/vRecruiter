@@ -1,9 +1,9 @@
 import { OneToMany,Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable, ManyToOne, JoinColumn } from 'typeorm';
 import { User } from './User';
-import { Company } from './Company';
-import { Answer } from './Answer';
-@Entity('jobs')
-export class Job {
+import { Job } from './Job';
+import { UserJob } from './UserJob';
+@Entity('answers')
+export class Answer {
     @PrimaryGeneratedColumn()
     id: number;
   
@@ -13,9 +13,6 @@ export class Job {
     @Column()
     description: string;
     // Defina a relação inversa com a entidade Company
-   @ManyToOne(() => Company, company => company.jobs)
-    company: Company;
-   @OneToMany(() => Answer, answer => answer.job)
-   answers: Answer[];
-   gabarito: string
+    @ManyToOne(() => Job, job => job.answers)
+    job: Job;
   }
