@@ -15,8 +15,8 @@ export class Job {
     // Defina a relação inversa com a entidade Company
     @ManyToOne(() => Company, company => company.jobs)
     company: Company;
-    @Column({type: 'simple-array'})
-    perguntas: string[]
+    @Column({ type: 'jsonb' })
+    dados: { perguntas: string[], alternativas: string[] }[];
     @Column()
     gabarito: string
   }
