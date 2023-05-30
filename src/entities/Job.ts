@@ -13,12 +13,10 @@ export class Job {
     @Column()
     description: string;
     // Defina a relação inversa com a entidade Company
-   @ManyToOne(() => Company, company => company.jobs)
+    @ManyToOne(() => Company, company => company.jobs)
     company: Company;
-    @Column()
-    perguntas: string
-    @Column({type: 'longtext'})
-    alternativas:string
+    @Column({type: 'simple-array'})
+    perguntas: string[]
     @Column()
     gabarito: string
   }

@@ -29,7 +29,6 @@ export class UserJob {
   isOpen: boolean
   @Column({nullable: true})
   iframe:string
-
   @Column({nullable: true})
   right_answers: number
 }

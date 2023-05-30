@@ -8,7 +8,7 @@ import {
 	ManyToMany
 } from 'typeorm'
 import { Job } from './Job'
-import { UserJob } from './UserJob'
+import { Profile } from './Profile'
 
 @Entity('users')
 export class User {
@@ -17,14 +17,11 @@ export class User {
 
 	@Column({ type: 'text' })
 	name: string
-
+	@Column()
+	password:string
 	@Column({ type: 'varchar', unique: true, length:255})
 	email: string
-
-	@Column({ type: 'text'})
-	password: string
-	@Column({type:'simple-array'})
-	experiencia: string[]
-	@Column({type: 'simple-array'})
-	formacao: string[]
+	@OneToOne(() => Profile, profile => profile.user, { cascade: true })
+ 	@JoinColumn()
+ 	profile: Profile;
 }

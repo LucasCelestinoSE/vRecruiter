@@ -22,7 +22,6 @@ export async function createJob(req: Request, res: Response){
 			newJob.company = company
 			newJob.gabarito = gabarito
 			newJob.perguntas = perguntas
-			newJob.alternativas = alternativas
 			await jobsRepository.save(newJob)
 
 			return res.status(201).json(newJob)

@@ -12,4 +12,5 @@ routes.get('/admin/empresa/vaga/:id/',auth,adminController.renderJobs) // Listag
 routes.get('/admin/vaga/:id/',auth,adminController.listJobByjobId) // listagem de vagas criadas pelo id da vaga
 routes.get('/admin/usuario/pass/:companyId/:jobId/', companyController.ranking) // 
 routes.get('/admin',auth )
+routes.get('/perfil', auth, )
 export default routes
