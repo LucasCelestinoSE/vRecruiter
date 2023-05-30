@@ -7,7 +7,7 @@ import { Job } from '../../entities/Job'
 const jwt = require('jsonwebtoken')
 
 export async function createJob(req: Request, res: Response){
-    	const {title, description,perguntas,alternativas,gabarito} = req.body
+    	const {title, description,dados,alternativas,gabarito} = req.body
 		const id = Number(req.params.id)
 		try {
 			const company = await companyRepository.findOne({where:{
@@ -21,10 +21,10 @@ export async function createJob(req: Request, res: Response){
 			newJob.description = description
 			newJob.company = company
 			newJob.gabarito = gabarito
-			newJob.dados = perguntas
+			newJob.dados = dados
 			await jobsRepository.save(newJob)
 
-			return res.status(201).json(newJob)
+			return res.status(201).json('Vaga Criada!')
 		} catch (error) {
 			console.log(error)
 			return res.status(500).json({ message: 'Internal Sever Error' })
