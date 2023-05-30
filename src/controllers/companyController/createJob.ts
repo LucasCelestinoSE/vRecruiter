@@ -7,12 +7,8 @@ import { Job } from '../../entities/Job'
 const jwt = require('jsonwebtoken')
 
 export async function createJob(req: Request, res: Response){
-    	const {title, description} = req.body
-		const testes = req.body.teste
+    	const {title, description,perguntas,alternativas,gabarito} = req.body
 		const id = Number(req.params.id)
-		const body = req.body.perguntas
-		console.log(body)
-		const {gabarito} = req.body
 		try {
 			const company = await companyRepository.findOne({where:{
 				id: id
@@ -25,7 +21,8 @@ export async function createJob(req: Request, res: Response){
 			newJob.description = description
 			newJob.company = company
 			newJob.gabarito = gabarito
-			newJob.perguntas = body
+			newJob.perguntas = perguntas
+			newJob.alternativas = alternativas
 			await jobsRepository.save(newJob)
 
 			return res.status(201).json(newJob)
