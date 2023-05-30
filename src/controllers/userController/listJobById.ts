@@ -5,7 +5,7 @@ export async function listjobById(req: Request, res: Response){
 try{
     
     const idJob = Number(req.params.id)
-    const job = await jobsRepository.find({where:{id: idJob},select:['id','title','company','description']})
+    const job = await jobsRepository.find({where:{id: idJob},select:['id','title','company','description','perguntas']})
     return res.status(200).json(job)}
 catch(error){
     return res.status(500).json('Internal server error')
