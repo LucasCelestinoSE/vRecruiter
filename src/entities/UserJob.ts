@@ -10,7 +10,7 @@ import {
 } from 'typeorm'
 import { User } from './User';
 import { Job } from './Job';
-import { Phase } from './Phase';
+
 @Entity('userjobs')
 export class UserJob {
   @PrimaryGeneratedColumn()
