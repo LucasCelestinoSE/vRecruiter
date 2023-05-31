@@ -16,7 +16,7 @@ export class Profile {
     id: number
 	@Column({ type: 'text' })
     genero: string;
-	@Column({ type: 'text' })
+	@Column({ type: 'text' , nullable:true})
     idade: string;
 	@Column()
 	telefone:string
@@ -24,12 +24,14 @@ export class Profile {
 	cep: string
 	@Column()
 	estado:string
-	@Column({nullable:true})
+	@Column()
 	cidade: string
-	@Column({type: 'jsonb'})
+	@Column({type: 'jsonb', nullable:true})
 	redesSociais: { 
-		redes:string[]}[];
-	@Column({type: 'jsonb'})
+		instagram: string,
+		facebook: string,
+		twitter: string}
+	@Column({type: 'jsonb', nullable:true})
 	experiencias: { 
 		experiencia: string[], 
 		empresa: string[],
@@ -47,8 +49,8 @@ export class Profile {
     idiomas:{idioma:string, nivel:string}[];
     @Column({type: 'jsonb',nullable:true})
     habilidades: {habilidade: string[]}[]
-    @Column({type: 'boolean',nullable:true})
-    deficiencia: boolean
+    @Column({type: 'jsonb',nullable:true})
+    deficiencia: {nome:string[]}[]
     @OneToOne(() => User, user => user.profile)
 	user: User;
     
