@@ -4,7 +4,7 @@ import { userRepository } from "../../repositories/userRepository"
 import { Response, Request } from "express"
 export async function userProfile(req: Request, res: Response) {
     const userId = res.locals.myvalue.id
-    const {genero,idade,telefone,cep,estado,cidade,experiencias,formacoes,idiomas,habilidades,deficiencia} = req.body
+    const {redesSociais,genero,idade,telefone,cep,estado,cidade,experiencias,formacoes,idiomas,habilidades,deficiencia} = req.body
     try {
         
         const user = await userRepository.findOne({where:{id:userId}, relations:{profile:true}})
@@ -21,7 +21,9 @@ export async function userProfile(req: Request, res: Response) {
         newProfile.idade = idade
         newProfile.telefone = telefone
         newProfile.cep = cep
+        newProfile.cidade = cidade
         newProfile.estado = estado
+        newProfile.redesSociais = redesSociais
         newProfile.experiencias = experiencias
         newProfile.formacoes = formacoes
         newProfile.idiomas = idiomas
