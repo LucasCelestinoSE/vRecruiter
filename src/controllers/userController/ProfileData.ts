@@ -11,7 +11,12 @@ export async function profileData(req: Request, res: Response) {
         },relations:{
             profile:true
         }})
-        
+        if(!user){
+            return res.status(401).json('Não existe esse usuário cadastrado no sistema')
+        }
+        if(!user.profile){
+            return res.status(401).json('Não existe um perfil cadastrado a esse usuário')
+        }
         return res.status(200).json(user)
     } catch (error) {
         console.log(error)
