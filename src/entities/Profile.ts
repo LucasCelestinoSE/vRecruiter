@@ -24,6 +24,11 @@ export class Profile {
 	cep: string
 	@Column()
 	estado:string
+	@Column({nullable:true})
+	cidade: string
+	@Column({type: 'jsonb'})
+	redesSociais: { 
+		redes:string[]}[];
 	@Column({type: 'jsonb'})
 	experiencias: { 
 		experiencia: string[], 

@@ -3,24 +3,35 @@
 <head>
   <title>Gerar PDF</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
+  <style>
+    .conteudo {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        }
+        #nome{
+            margin-left: 60px;
+        }
+  </style>
 </head>
 <body>
-  
-  <h1> <%= jsonFile.nome %></h1>
-
-  <script>
-    // Função para gerar o PDF
-    function gerarPDF() {
-      const doc = new jsPDF();
-      const conteudo = document.documentElement.innerHTML;
-      doc.fromHTML(conteudo, 15, 15, {
-        'width': 180
-      });
-      doc.save('documento.pdf');
-    }
-
-    // Chamar a função para gerar o PDF ao carregar a página
-    gerarPDF();
-  </script>
+  <div >
+        <div> 
+            <div class="conteudo">
+            <p id="nome"><h1><%= jsonFile.name %></h1></p>
+        </div>
+            <p>
+                <h2> 
+                    Contato: <%= jsonFile.profile.genero %>
+                    <span> </span>
+                </h2>
+            </p>
+        </div>
+    </div>
+ 
 </body>
+<script>
+    
+  </script>
 </html>
