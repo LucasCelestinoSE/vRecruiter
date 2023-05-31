@@ -11,6 +11,7 @@ import * as listCompanyById from './listCompanyById'
 import * as listJobById from './listJobById'
 import * as userProfile from './userProfile'
 import * as profileData from './ProfileData'
+import * as attProfile from './attProfile'
 export const userController = {
     ...listUser,
     ...listUserById,
@@ -24,7 +25,8 @@ export const userController = {
     ...listCompanyById,
     ...listJobById,
     ...userProfile,
-    ...profileData
+    ...profileData,
+    ...attProfile
 }
 
 
