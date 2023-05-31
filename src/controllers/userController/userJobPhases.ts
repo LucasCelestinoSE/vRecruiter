@@ -9,7 +9,7 @@ export async function userJobPhases(req: Request, res: Response) {
     const idJob = Number(req.params.idJob)
     const idUser = Number(res.locals.myvalue.id)
     const gabarito = req.body.gabarito
-    
+
     const iframe = req.body.iframe
     try {
         const job = await jobsRepository.findOne({where:{id: idJob}})
@@ -31,14 +31,14 @@ export async function userJobPhases(req: Request, res: Response) {
         if (userRegis.isOpen == true){
             if(userRegis.stage == 0){
                 let test = job.gabarito
-                
-                console.log(test)
+
+               
                 const jsonString = JSON.stringify(test);
                 const objetoJSON = JSON.parse(jsonString);
                 const testCorte = objetoJSON.split(' ')
-                console.log(testCorte)
+                
                 const gabCorte = gabarito.split(" ")
-                console.log(gabCorte)
+                
                 const temValoresIguais = gabCorte.map((item:string, index:number) => item === testCorte[index])
                 const quantidade = temValoresIguais.reduce((count:any, value:any) => {
                     if (value === true) {

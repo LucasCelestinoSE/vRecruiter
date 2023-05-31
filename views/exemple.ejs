@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gerar PDF</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
+</head>
+<body>
+  
+  <h1> <%= jsonFile.nome %></h1>
+
+  <script>
+    // Função para gerar o PDF
+    function gerarPDF() {
+      const doc = new jsPDF();
+      const conteudo = document.documentElement.innerHTML;
+      doc.fromHTML(conteudo, 15, 15, {
+        'width': 180
+      });
+      doc.save('documento.pdf');
+    }
+
+    // Chamar a função para gerar o PDF ao carregar a página
+    gerarPDF();
+  </script>
+</body>
+</html>

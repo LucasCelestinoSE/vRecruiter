@@ -14,17 +14,37 @@ import { User } from './User'
 export class Profile {
     @PrimaryGeneratedColumn()
     id: number
-	@Column({type:'simple-array'})
-	experiencia: string[]
-	@Column({type: 'simple-array'})
-	formacoes: string[]
-    @Column({type:'simple-array'})
-    idiomas: string[]
-    @Column({type: 'simple-array'})
-    habilidades: string[]
-    @Column({type: 'simple-array'})
-    preferencia: string[]
+	@Column({ type: 'text' })
+    genero: string;
+	@Column({ type: 'text' })
+    idade: string;
+	@Column()
+	telefone:string
+	@Column()
+	cep: string
+	@Column()
+	estado:string
+	@Column({type: 'jsonb'})
+	experiencias: { 
+		experiencia: string[], 
+		empresa: string[],
+		cidade:string[],
+		descricao: string[],
+		inicio:string,
+		fim:string }[];
+	@Column({type: 'jsonb', nullable:true})
+	formacoes: {formacao: string[],
+				instituicao:string,
+				local:string,
+				inicio:string,
+				fim:string}[]
+    @Column({type:'jsonb',nullable:true})
+    idiomas:{idioma:string, nivel:string}[];
+    @Column({type: 'jsonb',nullable:true})
+    habilidades: {habilidade: string[]}[]
+    @Column({type: 'boolean',nullable:true})
+    deficiencia: boolean
     @OneToOne(() => User, user => user.profile)
-    user: User;
+	user: User;
     
 }
