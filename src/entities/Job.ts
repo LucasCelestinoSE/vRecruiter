@@ -9,7 +9,7 @@ export class Job {
   
     @Column()
     title: string;
-  
+    
     @Column()
     description: string;
     // Defina a relação inversa com a entidade Company
@@ -17,6 +17,8 @@ export class Job {
     company: Company;
     @Column({ type: 'jsonb' })
     dados: { perguntas: string[], alternativas: string[] }[];
+    @Column({ type: 'jsonb' })
+    dataContrato: { requisitos:string[], responsabilidades:string[],addInfos:string[] }[];
     @Column()
     gabarito: string
   }

@@ -7,14 +7,11 @@ const axios = require('axios');
 const jwt = require('jsonwebtoken') 
 
 export async function createCompany(req: Request, res: Response){
-    const {name} = req.body
+    const info = req.body
     try {
-            const newCompany = companyRepository.create({name: name})
+            const newCompany = companyRepository.create(info)
             await companyRepository.save(newCompany)
-            const token = jwt.sign({ newCompany }, jwtsecret.secretJWTU, { expiresIn: "10y" })
-            newCompany.token = token
-            const empresa = await companyRepository.save(newCompany)
-            return res.status(200).json({empresa})
+            return res.status(200).json(info)
         } catch (error) {
             
             return res.status(400).json({error})

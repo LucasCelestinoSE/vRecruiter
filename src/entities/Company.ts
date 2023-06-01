@@ -7,6 +7,14 @@ export class Company {
 
   @Column({ type: 'text' })
   name: string;
+  @Column()
+  apresentacao:string
+  @Column()
+  visao:string
+  @Column()
+  missao:string
+  @Column('text',{array:true})
+  valores:string[]
   @Column({nullable: true})
   token: string
   // Defina o relacionamento "1 para muitos" com a entidade Job

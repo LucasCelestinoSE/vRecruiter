@@ -24,7 +24,7 @@ export class Profile {
 	cep: string
 	@Column()
 	estado:string
-	@Column()
+	@Column({nullable:true})
 	cidade: string
 	@Column({type: 'jsonb', nullable:true})
 	redesSociais: { 
