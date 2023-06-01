@@ -25,7 +25,7 @@ export async function userJobRegister(req: Request, res: Response) {
         }})
         console.log(userRegis)
         if(userRegis){
-            return res.status(400).json('Você já está cadastrado nessa vaga!')
+            return res.status(403).json('Você já está cadastrado nessa vaga!')
         }
         
         const userJob = new UserJob();

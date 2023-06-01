@@ -36,9 +36,10 @@ export async function userJobPhases(req: Request, res: Response) {
                 const jsonString = JSON.stringify(test);
                 const objetoJSON = JSON.parse(jsonString);
                 const testCorte = objetoJSON.split(' ')
+                console.log(testCorte)
                 
                 const gabCorte = gabarito.split(" ")
-                
+                console.log(gabCorte)
                 const temValoresIguais = gabCorte.map((item:string, index:number) => item === testCorte[index])
                 const quantidade = temValoresIguais.reduce((count:any, value:any) => {
                     if (value === true) {
