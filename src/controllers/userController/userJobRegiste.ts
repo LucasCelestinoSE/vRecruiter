@@ -7,8 +7,8 @@ import { userJobRepository } from "../../repositories/userJogRepository";
 
 export async function userJobRegister(req: Request, res: Response) {
     const idJob = Number(req.params.idJob)
-    const idUser = Number(res.locals.myvalue.id)
-    const {name,genero,experiencia,area,idade} = req.body
+    const idUser =  Number(res.locals.myvalue.id)
+    console.log(idUser)
     try {
         const job = await jobsRepository.findOne({where:{id: idJob}, relations:{company:true}})
         if (!job){

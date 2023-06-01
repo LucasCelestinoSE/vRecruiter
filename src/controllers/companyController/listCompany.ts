@@ -4,7 +4,7 @@ import { Response, Request } from "express"
 export async function listCompany(req: Request, res: Response) {
     const jobId = req.body.id
     try {
-        const companys = await companyRepository.find({select:['id', 'name']});
+        const companys = await companyRepository.find({select:['id', 'name','jobs'],relations:{jobs:true}});
 
         return res.status(200).json({empresas:companys})
     } catch (error) {

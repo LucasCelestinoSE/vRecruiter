@@ -12,6 +12,7 @@ import * as listJobById from './listJobById'
 import * as userProfile from './userProfile'
 import * as profileData from './ProfileData'
 import * as attProfile from './attProfile'
+import * as profileById from './profileById'
 export const userController = {
     ...listUser,
     ...listUserById,
@@ -26,7 +27,8 @@ export const userController = {
     ...listJobById,
     ...userProfile,
     ...profileData,
-    ...attProfile
+    ...attProfile,
+    ...profileById
 }
 
 

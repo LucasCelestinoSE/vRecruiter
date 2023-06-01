@@ -55,10 +55,10 @@ export async function userJobPhases(req: Request, res: Response) {
                         .json(
                         {message: 'Usuário avançou de fase! ',data: userRegis    })
                     }else{
-                 userRegis.isOpen = true
+                 userRegis.isOpen = false
                  
             await userJobRepository.save(userRegis)
-            return res.status(200).json('Infelizmente você nao atingiu a pontuação mínima!')
+            return res.status(401).json('Infelizmente você nao atingiu a pontuação mínima!')
             }
         }
         else if(userRegis.stage == 1){
